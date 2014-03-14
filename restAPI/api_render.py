@@ -35,7 +35,9 @@ def upload_file():
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             return redirect(url_for('uploaded_file',
                                     filename=filename))
-    return jsonify({'OK': 200})
+    response = make_response(jsonify({"OK": "Content Saved"}), 200)
+    response.cache_control.no_cache = True
+    return response
 
 
 @app.errorhandler(404)
