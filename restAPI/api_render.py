@@ -45,6 +45,36 @@ def page_not_found(e):
         return jsonify({'Not Found': 404})
 
 
+# Basic Error handlers
+@app.errorhandler(404)
+def resource_not_found(e):
+    return render_template('BC404.html'), 404
+
+
+@app.errorhandler(400)
+def bad_request(e):
+    return make_response(jsonify({"Error 400":
+                                  "Bad request"}), 400)
+
+
+@app.errorhandler(500)
+def internal_error(e):
+    return make_response(jsonify({"Error 500":
+                                  "Internal Server Error"}), 500)
+
+
+@app.errorhandler(405)
+def invalidMethod(e):
+    return make_response(jsonify({"Error 405":
+                                  "Invalid Request Method"}), 405)
+
+
+@app.errorhandler(410)
+def gone(e):
+    return make_response(jsonify({"Error 410":
+                                  "Resource is Gone"}), 410)
+
+
 if __name__ == '__main__':
     # import newrelic.agent
     # newrelic.agent.initialize('newrelic.ini')
