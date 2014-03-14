@@ -4,11 +4,15 @@
 import os
 
 from flask import Flask
-from flask import render_template
+from flask import render_template, request
 from flask import redirect
 from flask import url_for
-from flask import session, jsonify
+from flask import session, jsonify, json
 from werkzeug.utils import secure_filename
+
+from flask import make_response
+from flask import Response
+from flask import abort
 
 UPLOAD_FOLDER = '/home/synod/Desktop/WhatsApp'
 ALLOWED_EXTENSIONS = set(['.db', '.crypt'])
@@ -17,10 +21,10 @@ ALLOWED_EXTENSIONS = set(['.db', '.crypt'])
 app = Flask(__name__)
 
 
-
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
+
 
 @app.route('/api/v0.0.1/WhatsApp/', methods=['GET', 'POST'])
 def upload_file():
@@ -32,6 +36,7 @@ def upload_file():
             return redirect(url_for('uploaded_file',
                                     filename=filename))
     return jsonify({'OK': 200})
+
 
 @app.errorhandler(404)
 def page_not_found(e):
