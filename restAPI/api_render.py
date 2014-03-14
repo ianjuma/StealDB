@@ -10,7 +10,7 @@ from flask import url_for
 from flask import session
 from werkzeug.utils import secure_filename
 
-UPLOAD_FOLDER = '/home/'
+UPLOAD_FOLDER = '/home/synod/Desktop/WhatsApp'
 ALLOWED_EXTENSIONS = set(['.db', '.crypt'])
 
 
@@ -22,7 +22,7 @@ def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/api/v0.0.1/WhatsApp/', methods=['GET', 'POST'])
 def upload_file():
     if request.method == 'POST':
         file = request.files['file']
@@ -31,16 +31,11 @@ def upload_file():
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             return redirect(url_for('uploaded_file',
                                     filename=filename))
-    return "SUCCESS"
+    return jsonify({'OK': 200})
 
 @app.errorhandler(404)
 def page_not_found(e):
         return jsonify({'Not Found': 404})
-
-
-@app.route('/WhatsApp/')
-def index():
-    return "WhatsApp"
 
 
 if __name__ == '__main__':
