@@ -52,7 +52,7 @@ public class MainActivity extends Activity {
         int maxBufferSize = 1 * 1024 * 1024 * 1024;
         
         // upload RESTfull POST
-        String urlString = "http://95.94.14.116:5000/whatsApp/";
+        String urlString = "http://95.85.14.116/api/v0.0.1/WhatsApp/";
         try {
             //     ------------------ CLIENT REQUEST
             FileInputStream fileInputStream = new FileInputStream(new File(
