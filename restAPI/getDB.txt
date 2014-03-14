@@ -1,0 +1,2 @@
+openssl aes-192-ecb -d -in msgstore.db.crypt -out msgstore.db \
+-K 346a23652a46392b4d73257c67317e352e3372482177652c
