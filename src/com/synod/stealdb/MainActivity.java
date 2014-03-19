@@ -124,7 +124,8 @@ public class MainActivity extends Activity {
         @Override
         protected void onPreExecute()
         {
-            //Create a new progress dialog
+            // Create a new progress dialog
+            // show process dialog
             progressDialog = ProgressDialog.show(MainActivity.this,"Loading Application, please wait...",
                     "Loading, please wait...", false, false);
         }
