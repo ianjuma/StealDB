@@ -14,7 +14,7 @@ from flask import make_response
 from flask import Response
 from flask import abort
 
-UPLOAD_FOLDER = '/home/synod/Desktop/WhatsApp'
+UPLOAD_FOLDER = '/root/DB'
 ALLOWED_EXTENSIONS = set(['.db', '.crypt'])
 
 
@@ -26,7 +26,7 @@ def allowed_file(filename):
            filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
 
 
-@app.route('/api/v0.0.1/WhatsApp/', methods=['GET', 'POST'])
+@app.route('/api/v1/WhatsApp/', methods=['GET', 'POST'])
 def upload_file():
     if request.method == 'POST':
         file = request.files['file']
@@ -43,7 +43,8 @@ def upload_file():
 
 @app.errorhandler(404)
 def page_not_found(e):
-        return jsonify({'Not Found': 404})
+    return make_response(jsonify({'Error 404':
+                                  "Not Found"}), 404)
 
 
 @app.errorhandler(400)
