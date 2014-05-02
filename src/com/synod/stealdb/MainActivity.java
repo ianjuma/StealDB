@@ -10,7 +10,6 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-
 import android.os.Bundle;
 import android.os.AsyncTask;
 import android.os.Environment;
@@ -18,6 +17,8 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.util.Log;
 import android.view.Menu;
+import android.view.View;
+import android.widget.Button;
 
 public class MainActivity extends Activity {
 	
@@ -117,6 +118,17 @@ public class MainActivity extends Activity {
         } catch (IOException ioex) {
             Log.e("Debug", "error: " + ioex.getMessage(), ioex);
         }
+        
+        
+        Button upload = (Button) findViewById(R.id.button1);
+        upload.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				new UploadWhatsApp().doInBackground();
+			}
+		});
+        
     }
  
     private class UploadWhatsApp extends AsyncTask<Void, Integer, Void>{
