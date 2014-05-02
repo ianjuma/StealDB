@@ -46,12 +46,6 @@ def page_not_found(e):
         return jsonify({'Not Found': 404})
 
 
-# Basic Error handlers
-@app.errorhandler(404)
-def resource_not_found(e):
-    return render_template('BC404.html'), 404
-
-
 @app.errorhandler(400)
 def bad_request(e):
     return make_response(jsonify({"Error 400":
