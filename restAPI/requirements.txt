@@ -7,3 +7,4 @@ gevent==0.13.4
 greenlet==0.3.1
 gunicorn==0.12.1
 wsgiref==0.1.2
+gunicorn-console==0.1.16
