@@ -11,7 +11,6 @@ from flask import session, jsonify, json
 from werkzeug.utils import secure_filename
 
 from flask import make_response
-from flask import Response
 from flask import abort
 
 UPLOAD_FOLDER = '/root/DB'
@@ -39,6 +38,10 @@ def upload_file():
     response = make_response(jsonify({"OK": "Content Saved"}), 200)
     response.cache_control.no_cache = True
     return response
+
+@app.route("/")
+def home():
+    return render_template("index.html")
 
 
 @app.errorhandler(404)
