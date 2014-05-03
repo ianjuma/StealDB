@@ -12,7 +12,7 @@ def numCPUs():
     return os.sysconf('SC_NPROCESSORS_ONLN')
 
 
-use = 'flask_render:app'
+use = 'api_render:app'
 bind = '127.0.0.1:8000'
 workers = numCPUs() * 2 + 1
 # backlog = 2048
