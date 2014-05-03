@@ -1,0 +1,7 @@
+#!/bin/bash
+
+uwsgi --daemonize --ini uwsgi-ini-config.ini
+gunicorn -c config-gunicorn.py api_render:app
+
+
+rm ./--ini #fix --ini file created
