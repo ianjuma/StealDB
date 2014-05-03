@@ -44,10 +44,17 @@ def home():
     return render_template("index.html")
 
 
+#@app.errorhandler(404)
+#def page_not_found(e):
+#    return make_response(jsonify({'Error 404':
+#                                  "Not Found"}), 404)
+
+
 @app.errorhandler(404)
 def page_not_found(e):
-    return make_response(jsonify({'Error 404':
-                                  "Not Found"}), 404)
+    resp = jsonify({"Error 404": "Not Found"})
+    resp.status_code = 404
+    return resp
 
 
 @app.errorhandler(400)
