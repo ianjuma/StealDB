@@ -21,7 +21,7 @@ else:
 # Not a good option for UWSGI --daemonize it
 call(
     ['uwsgi', '-T', '--threads', '10', '--master', '--processes', '4', '--workers', '3', '--socket', '127.0.0.1:8000', '-w',
-     'flask_render:app', '--protocol', 'http'])
+     'api_render:app', '--protocol', 'http'])
 
 #call(['uwsgi', '-s', '127.0.0.1:8000', '-w', 'flask_render:app',
 #     '--processes', '=4', '--workers', '4', '--protocol', 'http'])
