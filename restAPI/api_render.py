@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -
 
 import os
+import models
 
 from flask import Flask
 from flask import render_template, request
@@ -61,7 +62,10 @@ def getMemById():
         abort(400)
 
     if request.method == 'GET':
-        pass
+
+        users = models.users()
+        users.create()
+        s = users.select()
 
 
     if request.method == 'POST':
@@ -69,7 +73,10 @@ def getMemById():
         email = request.json.get('email')
         message = request.json.get('message')
 
-        
+        users = models.users()
+        users.create()
+        u_index = users.insert()
+        u_index.execute(email=email, name=name, message=message)
 
 
     resp = make_response(jsonify(db_rep))
