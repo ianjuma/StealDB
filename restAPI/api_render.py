@@ -40,6 +40,7 @@ def upload_file():
     response.cache_control.no_cache = True
     return response
 
+
 @app.route("/")
 def home():
     return render_template("index.html")
@@ -49,7 +50,6 @@ def home():
 #def page_not_found(e):
 #    return make_response(jsonify({'Error 404':
 #                                  "Not Found"}), 404)
-
 
 
 # response objects with no cache
@@ -63,26 +63,27 @@ def getMemById():
 
     if request.method == 'GET':
 
-        users = models.users()
-        users.create()
-        s = users.select()
+        models.users.create()
+        s = models.users.select()
+        rs = s.execute()
 
+        resp = make_response(jsonify(rs))
+        resp.cache_control.no_cache = True
+        return resp
+        
 
     if request.method == 'POST':
         name = request.json.get('name')
         email = request.json.get('email')
         message = request.json.get('message')
 
-        users = models.users()
-        users.create()
-        u_index = users.insert()
+        models.users.create()
+        u_index = models.users.insert()
         u_index.execute(email=email, name=name, message=message)
 
-
-    resp = make_response(jsonify(db_rep))
+    resp = make_response(jsonify({"Saved": "Saved"}))
     resp.cache_control.no_cache = True
     return resp
-
 
 
 @app.errorhandler(404)
