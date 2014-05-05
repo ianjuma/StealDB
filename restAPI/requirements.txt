@@ -1,10 +1,6 @@
 Flask==0.6.1
 Jinja2==2.5.5
-SQLAlchemy==0.6.6
+SQLAlchemy==0.9.4
 Werkzeug==0.6.2
-distribute==0.6.10
-gevent==0.13.4
-greenlet==0.3.1
-gunicorn==0.12.1
 wsgiref==0.1.2
 gunicorn-console==0.1.16
