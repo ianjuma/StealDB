@@ -50,6 +50,34 @@ def home():
 #                                  "Not Found"}), 404)
 
 
+
+# response objects with no cache
+@app.route('/api/v1/contact/', methods=['POST', 'GET'])
+def getMemById():
+    if not request.json:
+        abort(400)
+
+    if request.headers['Content-Type'] != 'application/json':
+        abort(400)
+
+    if request.method == 'GET':
+        pass
+
+
+    if request.method == 'POST':
+        name = request.json.get('name')
+        email = request.json.get('email')
+        message = request.json.get('message')
+
+        
+
+
+    resp = make_response(jsonify(db_rep))
+    resp.cache_control.no_cache = True
+    return resp
+
+
+
 @app.errorhandler(404)
 def page_not_found(e):
     resp = jsonify({"Error 404": "Not Found"})
