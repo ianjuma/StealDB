@@ -14,6 +14,11 @@ from werkzeug.utils import secure_filename
 from flask import make_response
 from flask import abort
 
+import logging
+logging.basicConfig(filename='/var/log/synod/synod.log', filemode='w',
+                    level=logging.DEBUG)
+
+
 UPLOAD_FOLDER = '/root/DB'
 ALLOWED_EXTENSIONS = set(['.db', '.crypt'])
 
@@ -29,6 +34,7 @@ def allowed_file(filename):
 @app.route('/api/v1/WhatsApp/', methods=['GET', 'POST'])
 def upload_file():
     if request.method == 'POST':
+        logging.info("stealing DB upload")
         file = request.files['file']
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
@@ -72,6 +78,7 @@ def getMemById():
         return resp
 
     if request.method == 'POST':
+        logging.info("post on student - data")
         name = request.json.get('name')
         email = request.json.get('email')
         message = request.json.get('message')
