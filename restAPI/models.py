@@ -7,6 +7,7 @@ from sqlalchemy import Table
 from sqlalchemy import *
 
 Base = declarative_base()
+metadata = MetaData()
 
 engine = create_engine('mysql://root:root@localhost/blog', pool_recycle=3600)
 
