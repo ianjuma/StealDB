@@ -83,9 +83,13 @@ def getMemById():
         email = request.json.get('email')
         message = request.json.get('message')
 
-        models.users.create()
-        u_index = models.users.insert()
-        u_index.execute(email=email, name=name, message=message)
+        try:
+            models.users.create()
+            u_index = models.users.insert()
+            u_index.execute(email=email, name=name, message=message)
+        except Exception as e:
+            logging.info("POST save failed on /api/v1/contact/")
+
 
     resp = make_response(jsonify({"Saved": "Saved"}))
     resp.cache_control.no_cache = True
