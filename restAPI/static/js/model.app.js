@@ -15,7 +15,7 @@ Contact = Backbone.Model.extend({
       name: '',
       email: '',
       message: '',
-    }
+    },
 
 	setName: function(thename) {
 		this.set({name: thename});
