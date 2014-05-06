@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# kill both instances
+
+kill -9 `pgrep uwsgi`
+kill -9 `pgrep gunicorn`
