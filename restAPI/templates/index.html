@@ -640,7 +640,7 @@
 						<textarea id="contact-message" name="comments" rows="1" class="label_better requiredField" data-new-placeholder="Message" placeholder="Message" data-error-empty="*Enter your message"></textarea>
 					</span>
 					
-					<p class="text-center"><button  name="submit" type="submit" class="btn btn-meflat icon-left" data-error-message="Error!" data-sending-message="Sending..." data-ok-message="Message Sent"><i class="fa fa-location-arrow"></i>Send Message</button></p>
+					<p class="text-center"><button id="contact-send" name="submit" type="submit" class="btn btn-meflat icon-left" data-error-message="Error!" data-sending-message="Sending..." data-ok-message="Message Sent"><i class="fa fa-location-arrow"></i>Send Message</button></p>
 					<input type="hidden" name="submitted" id="submitted" value="true" />
 					
 				</form>
@@ -684,21 +684,9 @@
 		
 		<!-- ==============================================
 		SCRIPTS
-		=============================================== -->	
+		=============================================== -->
 
-		<script type="text/javascript">
-			var app = {};
-
-		    app.Contact = Backbone.Model.extend({
-		      defaults: {
-		        name: '',
-		        email: '',
-		        message: '',
-		      }
-		    });
-
-		</script>
-
+		<script src="{{url_for('static', filename='js/model.app.js') }}"></script>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 		<script>window.jQuery || document.write('<script src="{{url_for('static', filename='js/libs/jquery-1.8.2.min.js') }}">\x3C/script>')</script>
 		
