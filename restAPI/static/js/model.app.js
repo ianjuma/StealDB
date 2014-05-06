@@ -1,6 +1,4 @@
-var app = {};
-
-app.Contact = Backbone.Model.extend({
+Contact = Backbone.Model.extend({
 
 	urlRoot: "/api/v1/contact/",
 
@@ -43,8 +41,8 @@ var email = $('#contact-mail').val();
 var message = $('#contact-message').val();
 
 $('#contact-send').click(function() {
-	var app.contact = new app.Contact();
+	var contact = new Contact();
 
-	app.contact.set({ "name": name, "email": email, "message": message });
-	app.contact.save();
+	contact.set({ "name": name, "email": email, "message": message });
+	contact.save();
 });
