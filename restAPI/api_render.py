@@ -70,7 +70,6 @@ def getMemById():
         resp = make_response(jsonify(rs))
         resp.cache_control.no_cache = True
         return resp
-        
 
     if request.method == 'POST':
         name = request.json.get('name')
