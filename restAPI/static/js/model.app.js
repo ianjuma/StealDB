@@ -29,10 +29,6 @@ Contact = Backbone.Model.extend({
 		this.set({message: message});
 	},
 
-	setInterval(function() {
-  		this.fetch();
-	}, 10000);
-
 });
 
 
